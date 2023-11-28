@@ -12,7 +12,9 @@ template <class T>
 class SmartPointerWrapper
 {
 private:
+    // Pointer to store data inside wrapper
     T* Data = nullptr;
+    // Pointer to store ref counter
     std::size_t* RefCounter = nullptr;
 public:
 
@@ -48,7 +50,12 @@ public:
         RefCounter = new std::size_t(1);
     }
 
-    // Operator =
+    /**
+        \brief Assignment operator
+        
+        \param [in] other object to be copied
+        \return returns a new object, with data from other
+    */
     SmartPointerWrapper& operator=(const SmartPointerWrapper& other)
     {
         // Check is other same as this
@@ -77,11 +84,15 @@ public:
         return *this;
     }
 
+    /// Method for assigning a value to a pointer
+    /// \param [in] data Data to copy to the pointer
     void SetData(const T& data)
     {
         *Data = data;
     }
 
+    /// Data getter
+    /// \return returns the data stored in the class
     T GetData()
     {
         return *Data;
@@ -89,8 +100,10 @@ public:
 
     ~SmartPointerWrapper()
     {
+        // Check if it not empty wrapper
         if(RefCounter != nullptr)
         {
+            // Check reference counter
             if (*RefCounter == 1)
             {
                 delete RefCounter;
