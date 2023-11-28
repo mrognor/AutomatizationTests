@@ -7,7 +7,7 @@ rm TmpReadMe.md
 
 # Create documentation
 mv Docs/Doxyfile Doxyfile
-# doxygen Doxyfile
+doxygen Doxyfile
 mv Doxyfile Docs/Doxyfile
 
 # Remove main page doxygen command from ReadMe.md
