@@ -46,6 +46,9 @@ jobs:
       - name: Show files
         run: ls
 
+      - name: Show files
+        run: ls Docs
+        
         
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v2
