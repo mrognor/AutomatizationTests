@@ -36,20 +36,23 @@ jobs:
       - name: Install Doxygen
         run: sudo apt install doxygen
 
-      - name: Show files
-        run: ls
-        
       # Create documentation
       - name: Create documentation
         run: ./Docs/Gendoc.sh
 
       - name: Setup Pages
         uses: actions/configure-pages@v3
+
+      - name: Show files
+        run: ls
+
+        
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v2
         with:
           # Upload entire repository
           path: './Docs/Generated/html/'
+          
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v2
